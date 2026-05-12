@@ -94,7 +94,7 @@ async function getLinkViews() {
       ...effectiveFilters.value,
     },
   })
-  views.value = (result.data || []).map(item => ({
+  views.value = (result.data || []).filter(item => item && item.time).map(item => ({
     ...item,
     visitors: +item.visitors,
     visits: +item.visits,

@@ -77,7 +77,7 @@ async function getHeatmapData() {
       ...effectiveFilters.value,
     },
   })
-  heatmapData.value = (result.data || []).map(item => ({
+  heatmapData.value = (result.data || []).filter(item => item && item.weekday != null && item.hour != null).map(item => ({
     ...item,
     visitors: +item.visitors,
     visits: +item.visits,
